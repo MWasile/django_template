@@ -31,7 +31,7 @@ SECRET_KEY = os.environ.get('DJ_SECRET_KEY')
 DEBUG = int(os.environ.get('DJ_DEBUG', False))
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.environ.get('DJ_ALLOWED_HOSTS', '').split()
 
 # Application definition
 
@@ -134,6 +134,9 @@ STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder'
 ]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
